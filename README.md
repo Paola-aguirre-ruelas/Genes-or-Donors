@@ -28,7 +28,7 @@ training than a panel selected for cell class alone (w = 0)?
 * Exploratory controls: expression-matched random 64-gene panels (20 per fold) and numerical
   sensitivity checks (fixed-alpha tolerance refits, identity-permutation sanity check, fallback diagnosis).
 
-Details: [`docs/METHODS.md`](docs/METHODS.md) · [regenerated Markdown report](report/compact_gene_panels_report_v2.0.md) · [reviewed four-page PDF](report/exploratory_report_v1.3.pdf)
+Details: [`docs/METHODS.md`](docs/METHODS.md) · [regenerated Markdown report](report/compact_gene_panels_report_v2.0.md) · [updated four-page PDF (v2.0)](report/exploratory_report_v2.0.pdf)
 
 ## Results
 
@@ -60,7 +60,7 @@ A negative Δ means w=1 scored slightly higher; it does not indicate benefit, eq
 | `configs/` | `study.toml` (all scientific parameters), `synthetic.toml`, `inputs.toml` (input provenance), `acceptance.toml` (comparison tolerances), `historical_references.toml` (SHA-256 pins of the historical artifacts, directory aliases only), `historical_dirs.example.toml`, `paths.example.toml` |
 | `tests/` | Synthetic test-suite (no real data) and an optional historical-trace conformance test |
 | `results/`, `figures/` | Tables, figures, `results.json`, comparison with the historical reference, SHA-256 manifest; individual codes in `table_01` are linkable pseudonyms (see [`docs/DATA.md`](docs/DATA.md)) |
-| `report/` | Regenerated Markdown report and template; reviewed four-page public PDF (`exploratory_report_v1.3.pdf`) |
+| `report/` | Regenerated Markdown report and template; updated four-page research PDF (`exploratory_report_v2.0.pdf`) |
 | `docs/` | Methods and limitations, data provenance and access, reproducibility guide, historical fidelity |
 | `ledger/` | Execution ledger of the reproduction |
 
