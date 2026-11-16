@@ -1,0 +1,47 @@
+{
+  "built_utc": "2026-11-16T19:40:07Z",
+  "environment": {
+    "machine": "arm64",
+    "platform": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+    "thread_pools": [
+      {
+        "internal_api": "openblas",
+        "num_threads": 8,
+        "threading_layer": "openmp",
+        "user_api": "blas",
+        "version": "0.3.34"
+      },
+      {
+        "internal_api": "openmp",
+        "num_threads": 8,
+        "user_api": "openmp",
+        "version": null
+      }
+    ],
+    "versions": {
+      "anndata": "0.13.4",
+      "compact_panels": "1.0.0",
+      "h5py": "3.16.0",
+      "matplotlib": "3.10.9",
+      "numba": "0.68.1",
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "python": "3.13.18",
+      "scanpy": "1.12.5",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "threadpoolctl": "3.8.0"
+    }
+  },
+  "files": {
+    "comparison_with_historical_reference.json": "e3f1d0cf27e3040d6b9b0c77c5b33ad665bec26305c0a067403fec24f595bcf5",
+    "figure_01_paired_donor_deltas.png": "87ed1905ee9fe20c2bc99eded4347dd1fa09204fa1372d73017f88295654c62c",
+    "figure_02_random_baseline.png": "9b08a7cb28651d432eb72c57dd1c22993cb87891102ea6fb23d5101b3e30e6ef",
+    "figure_03_panel_overlap.png": "900b6c58ce5400e245c98507f081c1a32a946c3a4ef8a028ce87eb4a120b25f9",
+    "results.json": "a0d0dbc5e44626e91d081631fc78a0df00d5a34d53227ece0f8a798a2bff7eef",
+    "table_01_individuals_anonymized.csv": "96c79228bdd128f14938f781e99981f720e73365e6530b8a1efba977d15a4803",
+    "table_02_fold_summary.csv": "adb9530cd0dfb9ef275d79d42111dd2c21563a5f9f38c14e6e042e502776fc26",
+    "table_03_panel_overlap.csv": "53eb51baa6b452e1f401a5ba58a20e835266b9f0cc3045f7fa7e48d84604a40d",
+    "table_04_selected_gene_membership.csv": "6c4801983fcd043b1b121123f3a8856c945a4efe8b6a285950056ecd17f50aca"
+  }
+}

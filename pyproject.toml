@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "compact-gene-panels"
+version = "1.0.0"
+description = "Reproducible pipeline for compact gene-panel selection under patient-identity supervision in single-cell transcriptomics"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Paola Aguirre" }]
+requires-python = ">=3.13,<3.14"
+keywords = ["single-cell", "transcriptomics", "gene panels", "feature selection", "reproducibility"]
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Operating System :: OS Independent",
+]
+# Exact versions of the verified environment. Other versions may change floating-point
+# paths (scanpy HVG, scikit-learn solvers) and therefore panel membership.
+dependencies = [
+    "numpy==2.5.4",
+    "scipy==1.18.1",
+    "pandas==3.1.1",
+    "scikit-learn==1.9.1",
+    "anndata==0.13.4",
+    "h5py==3.16.0",
+    "scanpy==1.12.5",
+    "matplotlib==3.10.9",
+    "threadpoolctl==3.8.0",
+]
+
+[project.scripts]
+cgp = "compact_panels.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

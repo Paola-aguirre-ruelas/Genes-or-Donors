@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below."
+title: "Compact gene panels under patient-identity supervision: a reproducible single-cell analysis pipeline"
+type: software
+authors:
+  - family-names: Aguirre
+    given-names: Paola
+    email: paolajanetaguirre@gmail.com
+contact:
+  - family-names: Aguirre
+    given-names: Paola
+    email: paolajanetaguirre@gmail.com
+repository-code: "https://github.com/koalaresearch/genes-or-donors"
+version: 1.0.0
+date-released: 2026-11-16
+license: MIT
+keywords:
+  - single-cell transcriptomics
+  - gene panel selection
+  - multi-task lasso
+  - donor generalization
+  - reproducibility
+abstract: >-
+  Research code, configuration, tests and descriptive results of an independent exploratory
+  study of how auxiliary patient-identity supervision changes 64-gene MultiTaskLasso panel
+  selection and donor-held-out immune-cell classification in single-cell RNA-seq
+  (88 individuals, four donor-disjoint folds).
+references:
+  - type: article
+    authors:
+      - family-names: Stephenson
+        given-names: Emily
+      - name: "et al."
+    title: "Single-cell multi-omics analysis of the immune response in COVID-19"
+    journal: "Nature Medicine"
+    volume: 27
+    start: 904
+    end: 916
+    year: 2021
+    doi: 10.1038/s41591-021-01329-2

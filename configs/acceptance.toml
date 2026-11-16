@@ -1,0 +1,22 @@
+# Comparison tolerances, fixed BEFORE any reproduced panel, classifier or score was inspected
+# (recorded 2026-11-16, before M2 execution).
+#
+# Classes:
+#   EXACT               identical lists / gene sets and bit-identical numbers
+#   NUMERICAL_AGREEMENT identical discrete outcomes; continuous values within tolerance
+#   DISCREPANCY         anything else (blocks certification of that component)
+#
+# Discrete outcomes that must be identical for anything better than DISCREPANCY:
+#   cell / individual lists of every fold plan; HVG candidate indices; the nnz trace of
+#   every alpha search; the 64-gene membership of every panel; exact64/fallback status;
+#   classifier class order and gene columns; random-panel membership; set of evaluated
+#   individuals; stability-check supports and verdicts.
+
+[tolerances]
+preprocessing_atol = 1e-12   # per-gene means / SDs (float64; historical replay criterion)
+alpha_rtol = 1e-12           # alpha trace (derived arithmetically from alpha_max)
+coef_atol = 1e-10            # final MultiTaskLasso coefficients
+dual_gap_rtol = 1e-6         # reported duality gaps
+classifier_atol = 1e-8       # logistic-regression coefficients / intercepts
+score_atol = 1e-12           # per-individual macro-F1 (ratios of integer counts)
+aggregate_atol = 1e-12       # fold and global donor-equal means

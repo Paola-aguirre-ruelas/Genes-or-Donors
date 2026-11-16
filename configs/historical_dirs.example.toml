@@ -1,0 +1,11 @@
+# Optional, local only. Copy to historical_dirs.local.toml (git-ignored) to enable the comparison
+# with the historical reference artifacts. Each alias used in historical_references.toml maps to a
+# directory under legacy_root (configs/paths.local.toml). Without this file the comparison is skipped.
+[dirs]
+splits = "<directory under legacy_root>"
+fold0_partition = "<directory under legacy_root>"
+fold0_run = "<directory under legacy_root>"
+cv_runs = "<directory under legacy_root>"
+random_reference = "<directory under legacy_root>"
+numerical_checks = "<directory under legacy_root>"
+delivery = "<directory under legacy_root>"

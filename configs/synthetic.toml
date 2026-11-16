@@ -1,0 +1,27 @@
+# Synthetic demonstration / test profile. Same algorithms and conventions as the study,
+# scaled down: no real-data invariants or input pins.
+extends = "study.toml"
+reset = ["expected", "inputs", "software"]
+
+[meta]
+name = "synthetic-demo"
+config_version = "1.0.0"
+description = "Scaled-down synthetic profile for tests and the end-to-end demonstration."
+
+[subsample]
+selector_cap = 12
+classifier_cap = 30
+
+[hvg]
+n_top_genes = 100
+
+[selector]
+k = 12
+memory_gate_bytes = 4000000000
+
+[random_reference]
+draws = 5
+bins = 10
+
+[stability]
+h1_alphas = []

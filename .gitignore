@@ -1,0 +1,16 @@
+# local data, paths and run outputs (never committed)
+configs/paths.local.toml
+configs/historical_dirs.local.toml
+.private-deny-terms
+runs/
+data/
+*.h5ad
+.venv/
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.DS_Store
+*.tmp

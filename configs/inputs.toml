@@ -1,0 +1,21 @@
+# Provenance of the three analysis inputs (Level A: verified-input reproduction).
+# The two auxiliary inputs can be re-derived with `cgp derive-inputs` from the verified H5AD and
+# the public ArrayExpress SDRF; the derived files are checked against the pins below.
+
+[h5ad]
+description = "Processed, subsampled single-cell object derived from Stephenson et al. (2021); 62,509 cells x 16,299 genes"
+sha256 = "2345f3c512552892bb8327f4779dc69972faccac3b00dcf90c0e9d9ae5ab738e"
+derivable = false   # subsampling/preprocessing provenance unresolved: Level B not claimed
+
+[identity_mapping]
+description = "H5AD patient_id (sample label) -> published biological individual"
+source = "ArrayExpress E-MTAB-10026 SDRF: Source Name (BGCVnn_<patient_id> for Cambridge) -> Characteristics[individual]"
+sdrf_url = "https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-10026"
+n_rows = 119
+pairs_sha256 = "98fef9e291580a52f87732c2f9665156f85404fc702a388a18b6edc500622aaf"
+
+[qc_exclusion]
+description = "Collection excluded before eligibility because its library token disagrees with the published sample records (suspected label exchange, not proven)"
+rule = { status_is_not = "LPS", patient_id = "CV0201", Collection_Day = "D28" }
+n_cells = 498
+sha256 = "48c6bf6788d8317f2c1157b38346c8707520b790805272ee5c5ac23b5ab69a3c"

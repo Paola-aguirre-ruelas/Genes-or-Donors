@@ -1,0 +1,121 @@
+# Study configuration: compact gene panels under patient-identity supervision.
+# Every scientific parameter of the executed historical analysis. Changing any value
+# changes config_sha256 and invalidates comparisons with the historical reference.
+
+[meta]
+name = "compact-gene-panels-donor-generalization"
+config_version = "1.0.0"
+description = "Donor-disjoint 4-fold exploratory comparison of 64-gene MultiTaskLasso panels selected with (w=1) and without (w=0) donor-identity supervision."
+
+[software]  # pinned versions of the verified environment (checked by `cgp validate`)
+python = "3.13.18"
+numpy = "2.5.4"
+scipy = "1.18.1"
+pandas = "3.1.1"
+scikit-learn = "1.9.1"
+anndata = "0.13.4"
+h5py = "3.16.0"
+scanpy = "1.12.5"
+
+[inputs]  # SHA-256 of the verified inputs (Level A reproduction prerequisite)
+h5ad_sha256 = "2345f3c512552892bb8327f4779dc69972faccac3b00dcf90c0e9d9ae5ab738e"
+identity_mapping_sha256 = "f165728cc23447b78628d8a7dd93ffed785298a4a7277e3c291ea70c3513831a"
+qc_exclusion_sha256 = "48c6bf6788d8317f2c1157b38346c8707520b790805272ee5c5ac23b5ab69a3c"
+
+[data]
+patient_column = "patient_id"
+site_column = "Site"
+status_column = "Status"
+cell_type_column = "author_cell_type"
+day_column = "Collection_Day"
+excluded_status = "LPS"
+
+[cohort]
+classes = ["NK_16hi", "CD4.Naive", "CD4.CM", "CD8.Naive", "CD8.TE"]
+min_cells_per_class = 20
+min_evaluable_classes = 3
+
+[partition]
+n_splits = 4
+shuffle = true
+seed = 20261112
+redraw_seed = 20261113
+
+[withholding]
+fraction = "0.2"          # m = floor(0.2 n + 1/2) per training individual x class; rng [seed, fold]
+
+[subsample]
+selector_cap = 50
+classifier_cap = 200
+selector_stream = 1       # rng [seed, fold, 1]
+classifier_stream = 2     # rng [seed, fold, 2]
+
+[hvg]
+n_top_genes = 2000
+flavor = "seurat"
+
+[selector]
+k = 64
+tol = 1e-4
+max_iter = 1000
+retry_max_iter = 10000
+max_steps = 25
+extra_steps = 25
+fallback_trigger = 8
+lower_frac = 1e-4
+first_alpha_frac = 0.1
+memory_gate_bytes = 5000000000
+
+[conventions]
+# Historical fact, preserved: fold 0 panels came from a separate recovery script
+# (w=0 lower bracket 0.01*alpha_max with geometric bisection from fit 2; scanpy call
+# with uns log1p base=None). Folds 1-3 used the CV runner (halving, then bisection).
+fold0_style_folds = [0]
+
+[conventions.default]
+search_variant = "cv_halving"
+hvg_convention = "cv"
+
+[conventions.fold0_style]
+search_variant = "fold0_recovery"
+hvg_convention = "pilot"
+w0_lower_frac = 0.01
+
+[classifier]
+C = 1.0
+solver = "lbfgs"
+max_iter = 1000
+
+[evaluation]
+min_cells_per_class = 20
+min_evaluable_classes = 3
+
+[random_reference]
+seed = 20261115
+draws = 20
+bins = 20
+salt = 444
+
+[stability]
+tol = 1e-5
+max_iter = 10000
+g3_threshold = 0.95
+g4_threshold = 0.90
+g4_seed = 20261115
+g4_fold = 0
+h1_fold = 3
+h1_arm = "w1"
+h1_alphas = [0.04935187, 0.04940738, 0.04940739, 0.05019123]
+
+[expected]  # real-data invariants verified by `cgp validate`
+n_cells = 62509
+n_genes = 16299
+n_individuals_mapped = 112
+n_excluded_status_cells = 2636
+n_pool_cells = 59375
+n_eligible = 88
+eligible_by_site = { Cambridge = 44, Ncl = 34, Sanger = 10 }
+n_analysis_cells = 24456
+analysis_cells_by_class = { "NK_16hi" = 6391, "CD4.Naive" = 5560, "CD4.CM" = 6233, "CD8.Naive" = 3151, "CD8.TE" = 3121 }
+fold_assignment_sha256 = "88be20459d44baeb7ed283b6af38331de4fb16cbc020a3be59d5590f00214756"
+test_cells_per_fold = [6021, 5633, 6000, 6802]

@@ -1,0 +1,23 @@
+{
+  "status": "PUBLIC_SOURCE_SHA256_VERIFIED",
+  "url": "https://exampledata.scverse.org/pertpy/stephenson_2021_subsampled.h5ad",
+  "method": "one HTTP GET with Python standard-library http.client (no redirects followed, no retry, Accept-Encoding: identity); body read into one fixed 1 MiB buffer with readinto(); hashlib.sha256 updated per chunk; chunks discarded; nothing written to disk",
+  "started_utc": "2026-11-16T19:21:30Z",
+  "expected_bytes": 700549709,
+  "expected_sha256": "2345f3c512552892bb8327f4779dc69972faccac3b00dcf90c0e9d9ae5ab738e",
+  "observed_bytes": 700549709,
+  "observed_sha256": "2345f3c512552892bb8327f4779dc69972faccac3b00dcf90c0e9d9ae5ab738e",
+  "http_status": 200,
+  "response_headers": {
+    "content-type": "binary/octet-stream",
+    "content-length": "700549709",
+    "last-modified": "Sun, 14 Sep 2025 15:05:44 GMT",
+    "etag": "\"4ad4e0cc182c06324756b7f7f45a7ebb-41\""
+  },
+  "written_to_disk": false,
+  "phase": "complete",
+  "error": null,
+  "python": "3.13.18",
+  "finished_utc": "2026-11-16T19:21:40Z",
+  "elapsed_s": 10.2
+}

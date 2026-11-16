@@ -1,0 +1,8 @@
+# Copy to configs/paths.local.toml (git-ignored) and edit. Relative paths are resolved
+# against this file's directory. Alternatively set CGP_PATHS=/path/to/paths.toml.
+[paths]
+h5ad = "../data/stephenson_2021_subsampled.h5ad"     # verified processed H5AD (SHA-256 pinned in study.toml)
+identity_mapping = "../data/identity_mapping.tsv"     # written by `cgp derive-inputs`
+qc_exclusion = "../data/qc_exclusion_cells.txt"       # written by `cgp derive-inputs`
+run_dir = "../runs/reproduction_v1"                    # isolated output directory for this run
+# legacy_root = "/path/to/historical/project"          # optional: enables `cgp compare`
