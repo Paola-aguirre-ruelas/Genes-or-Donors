@@ -15,6 +15,14 @@ does also asking it to recognise *which individual* each cell came from (identit
 change the selected genes — and does the panel then transfer worse to individuals never seen in
 training than a panel selected for cell class alone (w = 0)?
 
+## Ongoing research direction
+
+Building on the initial exploratory study, the next phase investigates how auxiliary donor-identity supervision changes gene selection in single-cell transcriptomics.
+
+The focus is on characterizing which genes are gained or lost, assessing the reproducibility of these changes across donor-disjoint training sets, and exploring their potential biological and technical interpretations.
+
+The follow-up experimental protocol remains under review. No prospective results are reported.
+
 ## Approach
 
 * Processed peripheral-blood scRNA-seq subset derived from Stephenson et al. (2021); sample labels
