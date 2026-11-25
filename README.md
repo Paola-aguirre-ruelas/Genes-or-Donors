@@ -43,7 +43,7 @@ The recurrence estimate was 46.5% using cold-fit sensitivity panels and 45.2% wh
 
 ED-01 provides pre-specified evidence conditional on successful selection within one previously analysed cohort. Shared sequencing pools limit donor independence. The experiment is not external validation, does not assess classification performance, and does not establish causal mechanisms or biomarker utility.
 
-**Status:** Experiment and scientific report completed. Public reproduction materials are undergoing final privacy and documentation review.
+**Status:** Completed and publicly released. [Scientific report and reproducibility package (ED-01 v1.2)](https://github.com/Paola-aguirre-ruelas/Genes-or-Donors/releases/tag/ed01-v1.2).
 
 ## Historical exploratory study
 
