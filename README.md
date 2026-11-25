@@ -145,4 +145,4 @@ prose: [CC BY 4.0](LICENSE-CONTENT.md). No third-party expression data are redis
 
 ## AI assistance
 
-AI tools assisted with the project and manuscript preparation. Claude conducted separate computational audits, and ChatGPT assisted with manuscript review. The author retains responsibility for the scientific content and conclusions.
+AI tools assisted with the project and manuscript preparation. Claude conducted separate computational audits after the results were obtained, and ChatGPT assisted with manuscript review. The author retains full responsibility for the scientific content and conclusions.
