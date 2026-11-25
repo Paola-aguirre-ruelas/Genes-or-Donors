@@ -1,29 +1,62 @@
-# Compact gene panels and donor generalization in single-cell transcriptomics
+# Genes or donors? Auxiliary supervision and compact gene selection in single-cell transcriptomics
 
-**Independent Exploratory Research in Computational Biology**
+**Independent Research in Computational Biology**
 
-This repository documents an independent exploratory research project investigating how patient-identity supervision influences compact gene-panel selection and donor-held-out classification in single-cell transcriptomics. It includes the research report, selected analysis code, descriptive results, and methodological limitations. The study has not undergone peer review and does not provide confirmatory evidence.
+How does an auxiliary learning objective change the genes selected by a sparse model? This project investigates how donor-identity supervision affects compact gene-panel selection in single-cell transcriptomics.
 
-This public-ready repository accompanies a four-page, descriptive exploratory research report.
+The initial exploratory study found substantially different panels despite similar observed donor-held-out classification performance. A completed, pre-specified follow-up (ED-01) examines whether gene-selection changes recur across donor-disjoint training sets. Neither study has undergone peer review.
 
 **Research author:** Paola Aguirre · **Code:** MIT · **Report, figures and results:** CC BY 4.0
 
-## Scientific question
+## ED-01 — How auxiliary supervision reshapes gene selection
+
+**Completed November 2026 · Pre-specified computational evaluation**
+
+Using 24,456 PBMC cells from 88 donors, ED-01 compares 64-gene MultiTaskLasso panels selected for cell-class recognition alone (w = 0) versus cell-class and donor-identity recognition (w = 1). The design uses 16 analytical splits into complementary, site-stratified 44-donor halves. Four pilot splits were excluded from the estimates. The protocol and code were frozen before the experimental seed was drawn from a public randomness beacon.
+
+### Key findings
+
+| Result | Estimate |
+|---|---:|
+| Mean genes replaced per 64-gene panel | 20.56 (32.1%) |
+| Net directional concordance between complementary halves | 19.19 genes |
+| Net directional recurrence of displacement | 46.7% |
+| Nominal 95% Monte Carlo interval for recurrence | 44.0–49.3% |
+| Concordant versus reversed gene changes | 310 vs 3 |
+| Relative displacement under within-class identity-label permutation | 6.7% |
+| Successful analytical panel searches | 112/112 |
+
+The recurrence estimate measures net agreement in the direction of gene gains and losses between complementary halves, relative to the mean number of gains plus losses per fit. Its interval describes re-splitting of this cohort, not uncertainty for new donors.
+
+### Which genes change?
+
+- **Recurrent gains:** HLA-B, HBB, RPL41 and EEF1G were gained in both halves of all 16 analytical splits. Interferon-response genes and RPS4Y1 also recurred.
+- **Changes in support:** 655 of 658 gain events involved genes with zero coefficient norm under the cell-class-only objective.
+- **Recurrent losses:** included T-cell and NK-cell markers, concentrated toward the low-norm end of the original panels.
+- **Exploratory functional patterns:** all six evaluable pre-specified gene sets were over-represented among gains relative to the candidate background in 29–32 of 32 stream-0 fits. No enrichment significance test was performed.
+
+Auxiliary supervision substantially changed selected gene sets, with partially reproducible directional changes across donor-disjoint training sets. The permutation control supports the importance of the alignment between individual labels and cells, but does not distinguish biological from technical sources of donor-associated variation.
+
+### Robustness and limitations
+
+The recurrence estimate was 46.5% using cold-fit sensitivity panels and 45.2% when restricting to the four splits without stream-0 fallback panels (a non-random subset). An independent computational recomputation agreed with the locked analysis to the reported numerical precision.
+
+ED-01 provides pre-specified evidence conditional on successful selection within one previously analysed cohort. Shared sequencing pools limit donor independence. The experiment is not external validation, does not assess classification performance, and does not establish causal mechanisms or biomarker utility.
+
+**Status:** Experiment and scientific report completed. Public reproduction materials are undergoing final privacy and documentation review.
+
+## Historical exploratory study
+
+The following methods, results and reproduction instructions refer to the original study, not ED-01.
+
+### Scientific question
 
 When a sparse multi-task model selects a compact 64-gene panel to recognise immune-cell classes,
 does also asking it to recognise *which individual* each cell came from (identity supervision, w = 1)
 change the selected genes — and does the panel then transfer worse to individuals never seen in
 training than a panel selected for cell class alone (w = 0)?
 
-## Ongoing research direction
-
-Building on the initial exploratory study, the next phase investigates how auxiliary donor-identity supervision changes gene selection in single-cell transcriptomics.
-
-The focus is on characterizing which genes are gained or lost, assessing the reproducibility of these changes across donor-disjoint training sets, and exploring their potential biological and technical interpretations.
-
-The follow-up experimental protocol remains under review. No prospective results are reported.
-
-## Approach
+### Approach
 
 * Processed peripheral-blood scRNA-seq subset derived from Stephenson et al. (2021); sample labels
   mapped to biological individuals; eligible individuals with enough cells in at least three of five
@@ -38,7 +71,7 @@ The follow-up experimental protocol remains under review. No prospective results
 
 Details: [`docs/METHODS.md`](docs/METHODS.md) · [regenerated Markdown report](report/compact_gene_panels_report_v2.0.md) · [updated four-page PDF (v2.0)](report/exploratory_report_v2.0.pdf)
 
-## Results
+### Results
 
 <!-- RESULTS:START -->
 *Generated by `cgp rebuild-results` from `results/results.json`; descriptive, one cross-validation repetition.*
